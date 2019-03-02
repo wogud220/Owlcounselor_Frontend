@@ -1,37 +1,29 @@
-import { Injectable } from '@angular/core';
-import serverURL from '../../../assets/server';
-import { Subscribable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import serverURL from "../../../assets/server";
+import { Subscribable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class PreferenceService {
+  constructor() {}
 
-  constructor() {
-    
-  }
-
-  getCourse(major: string, degree: number, semester: number): Promise<Response> {
+  getCourse(major: string, degree: number): Promise<Response> {
     var api = serverURL + "/api/courses";
     var payload = {
       major: major,
-      degree: degree,
-      semester: semester
+      degree: degree
     };
-    
+
     return fetch(api, {
       method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(payload)
-    }).then(res => res.json())
+    }).then(res => res.json());
   }
 
-  postValidation() {
-    
-  }
-
-
+  postValidation() {}
 }
