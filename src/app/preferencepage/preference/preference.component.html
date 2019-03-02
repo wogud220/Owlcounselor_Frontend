@@ -34,13 +34,13 @@
         <div
           cdkDropList
           #todoList="cdkDropList"
-          [cdkDropListData]="todo"
+          [cdkDropListData]="totake"
           [cdkDropListConnectedTo]="[doneList]"
           class="example-list"
           (cdkDropListDropped)="drop($event)"
         >
-          <div class="example-box color1" *ngFor="let item of todo" cdkDrag>
-            {{ item }}
+          <div class="example-box color1" *ngFor="let item of totake" cdkDrag>
+            {{ item.id }}
           </div>
         </div>
       </div>
@@ -51,18 +51,18 @@
         <div
           cdkDropList
           #doneList="cdkDropList"
-          [cdkDropListData]="done"
+          [cdkDropListData]="taken"
           [cdkDropListConnectedTo]="[todoList]"
           class="example-list"
           (cdkDropListDropped)="drop($event)"
         >
-          <div class="example-box color2" *ngFor="let item of done" cdkDrag>
-            {{ item }}
+          <div class="example-box color2" *ngFor="let item of taken" cdkDrag>
+            {{ item.id }}
           </div>
         </div>
       </div>
     </div>
-    <select class="browser-default custom-select">
+    <select class="browser-default custom-select" [(ngModel)]="currentSem">
       <option selected>Most recently completed</option>
       <option value="1">FRESHMEN FALL</option>
       <option value="2">FRESHMEN SPRING</option>

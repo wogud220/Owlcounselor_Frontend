@@ -21,12 +21,14 @@ import { MainpageService } from "../../mainpage/mainpage/mainpage.service";
   styleUrls: ["./preference.component.css"]
 })
 export class PreferenceComponent {
-  todo = ["Get to work", "Pick up groceries", "Go home", "Fall asleep"];
+  totake = [{ id: "waefwea", possible: [] }, { id: "yo", possible: [] }];
+
   url = "";
-  done = ["Get up", "Brush teeth", "Take a shower", "Check e-mail", "Walk dog"];
+  taken = [];
+  // done
   major = "";
   degree: number;
-  courses = [];
+  currentSem;
 
   constructor(
     private router: Router,
@@ -41,18 +43,13 @@ export class PreferenceComponent {
       // assume course_list is not null
       for (var i = 0; i < course_list.length; i++) {
         // TODO: Populate 'possible' semester
-        var possible = [];
-        if (course_list[i]["sem"] == "0") {
-        } else if (course_list[i]["sem"] == "1") {
-        } else {
-        }
 
         var temp_item: item = {
           id: course_list[i]["name"],
-          possible: possible
+          possible: []
         };
 
-        this.courses.push(temp_item);
+        this.totake.push(temp_item);
       }
     });
   }
@@ -75,6 +72,11 @@ export class PreferenceComponent {
   }
 
   direct() {
-    this.router.navigate(["/main"]);
+    console.log(this.currentSem);
+    console.log(this.taken);
+    // this.mainpageService.updateCourse(this.currentSem, this.taken).then(res => [
+    //   this.router.navigate(['/main']);
+    // ])
+    // this.router.navigate(["/main"]);
   }
 }
