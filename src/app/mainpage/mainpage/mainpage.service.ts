@@ -8,19 +8,15 @@ import { Observable, of } from 'rxjs';
 })
 export class MainpageService {
   option_courses = [
-    { id: "1001", name: "COMP140", possible: ["classbox", "sem0"] },
-    { id: "1002", name: "COMP182", possible: ["classbox", "sem1"] },
-    { id: "1003", name: "COMP215", possible: ["classbox", "sem0", "sem1", "sem2"] },
-    { id: "1004", name: "COMP310", possible: ["classbox", "sem0", "sem1", "sem2"] }
+    { name: "COMP140", possible: ["classbox", "sem0"] },
+    { name: "COMP182", possible: ["classbox", "sem1"] },
+    { name: "COMP215", possible: ["classbox", "sem0", "sem1", "sem2"] },
+    { name: "COMP310", possible: ["classbox", "sem0", "sem1", "sem2"] }
   ];
   
   taken_courses = [
-    [
-      
-    ], 
-    [
-      
-    ], 
+    [], 
+    [], 
     [], 
     [], 
     [], 
@@ -42,16 +38,21 @@ export class MainpageService {
 
   buildPayload() {
     // build payload for update
+
+    // TODO: Select semester
     var payload = {
+      "major": "Computer Science",
+      "degree": "BS",
+      "sem": 4,
       "taken": []
     };
-
+    
+    // Build taken
     for (var i = 0; i < this.taken_courses.length; i++) {
       var c = this.taken_courses[i];
       payload.taken.push({
-        "id": c["id"],
         "name": c["name"],
-        "taken": c["taken"]
+        "taken": i
       });
     };
     
@@ -59,11 +60,11 @@ export class MainpageService {
   }
 
   updateCourse() {
-    //TODO: Get major, degree, semester from other places
+    
     const api = serverURL + "/api/valid";
     
     var payload = this.buildPayload();
-
+    
     return fetch(api, {
       method: "POST",
       headers: {
@@ -71,6 +72,46 @@ export class MainpageService {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload)
-    }).then(res => res.json())
+    })
+    .then(res => res.json())
+    .then(res => this.updateCourseData(res));
   }
+
+  updateCourseData(res) {
+    var data = res.courses;
+    
+    // Clear option_courses
+    while(this.option_courses.length > 0) {
+      this.option_courses.pop();
+    }
+
+    // Clear taken_courses
+    for (var i = 0; i < this.taken_courses.length; i++) {
+      while(this.taken_courses[i].length > 0) {
+        this.taken_courses[i].pop();
+      }
+    }
+    
+    // Populate courses
+    for (var i = 0; i < data.length; i++) {
+      var course = data[i];
+      let temp_obj = {
+        name: course.name,
+        possible: ["classbox"]
+      };
+
+      for (var idx in course.sems) {
+        temp_obj['possible'].push("sem" + idx);
+      }
+
+      if (course.taken == -1) {
+        // Not taken
+        this.option_courses.push(temp_obj);
+      } else {
+        // Taken; add the courses to the corresponding columns
+        this.taken_courses[course.taken].push(temp_obj);
+      }
+    }
+  }
+
 }

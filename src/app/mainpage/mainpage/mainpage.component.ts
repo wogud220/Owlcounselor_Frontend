@@ -55,13 +55,14 @@ export class MainpageComponent {
         if (event.container.id === event.item.data.possible[i]) {
           // console.log(event.container);
           
-          
           transferArrayItem(
             event.previousContainer.data,
             event.container.data,
             event.previousIndex,
             event.currentIndex
           );
+
+          console.log(this.mainpageService.taken_courses);
           
           // TODO: Send valid request to server; get the updated courses list from server and populate
           // this.mainpageService.updateCourse().then(data => {
