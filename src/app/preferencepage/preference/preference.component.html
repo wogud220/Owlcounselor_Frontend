@@ -1,26 +1,13 @@
 <body>
   <div class="wrapper">
     <h1>Let us know about you</h1>
-    <div class="btn-group" mdbDropdown>
-      <button
-        mdbDropdownToggle
-        type="button"
-        mdbBtn
-        color="primary"
-        class="dropdown-toggle waves-light"
-        mdbWavesEffect
-      >
-        Major
-      </button>
-
-      <div class="dropdown-menu dropdown-primary">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="divider dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-      </div>
-    </div>
+    <select class="browser-default custom-select">
+      <option selected>Select Your Major</option>
+      <option value="1">Computer Science</option>
+      <option value="2">Electrical Engineer</option>
+      <option value="3">Economics</option>
+      <option value="4">History</option>
+    </select>
 
     <div class="classContainer">
       <div class="example-container">
@@ -57,6 +44,17 @@
         </div>
       </div>
     </div>
+    <select class="browser-default custom-select">
+      <option selected>Select Your Year</option>
+      <option value="1">FRESHMEN FALL</option>
+      <option value="2">FRESHMEN SPRING</option>
+      <option value="3">SOPHOMORE FALL</option>
+      <option value="4">SOPHOMORE SPRING</option>
+      <option value="5">JUNIOR FALL</option>
+      <option value="6">JUNIOR SPRING</option>
+      <option value="7">SENIOR FALL</option>
+      <option value="8">SENIOR SPRING</option>
+    </select>
     <button
       type="button"
       (click)="direct()"
