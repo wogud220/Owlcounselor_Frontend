@@ -30,6 +30,7 @@ h1 {
 
 .btn {
   display: block;
+  margin-top: 10px;
   width: 30%;
   background: #8ee4af;
 }
