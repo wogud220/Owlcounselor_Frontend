@@ -1,13 +1,31 @@
 <body>
   <div class="wrapper">
     <h1>Let us know about you</h1>
-    <select class="browser-default custom-select">
-      <option selected>Select Your Major</option>
-      <option value="1">Computer Science</option>
-      <option value="2">Electrical Engineer</option>
-      <option value="3">Economics</option>
-      <option value="4">History</option>
-    </select>
+
+    <form (ngSubmit)="onSubmit($event)">
+      <select
+        [(ngModel)]="major"
+        class="browser-default custom-select"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <option selected> Select Your Major </option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Electrical Engineering">Electrical Engineering</option>
+        <option value="Economics">Economics</option>
+        <option value="History">History</option>
+      </select>
+
+      <select
+        [(ngModel)]="degree"
+        [ngModelOptions]="{ standalone: true }"
+        class="browser-default custom-select"
+      >
+        <option selected>Select Your Degree</option>
+        <option value="0">Bachelor of Arts</option>
+        <option value="1">Bachelor of Science</option>
+      </select>
+      <button type="submit" class="btn-success">Click</button>
+    </form>
 
     <div class="classContainer">
       <div class="example-container">
@@ -21,7 +39,7 @@
           class="example-list"
           (cdkDropListDropped)="drop($event)"
         >
-          <div class="example-box" *ngFor="let item of todo" cdkDrag>
+          <div class="example-box color1" *ngFor="let item of todo" cdkDrag>
             {{ item }}
           </div>
         </div>
@@ -38,14 +56,14 @@
           class="example-list"
           (cdkDropListDropped)="drop($event)"
         >
-          <div class="example-box" *ngFor="let item of done" cdkDrag>
+          <div class="example-box color2" *ngFor="let item of done" cdkDrag>
             {{ item }}
           </div>
         </div>
       </div>
     </div>
     <select class="browser-default custom-select">
-      <option selected>Select Your Year</option>
+      <option selected>Most recently completed</option>
       <option value="1">FRESHMEN FALL</option>
       <option value="2">FRESHMEN SPRING</option>
       <option value="3">SOPHOMORE FALL</option>
@@ -60,7 +78,7 @@
       (click)="direct()"
       class="btn btn-info btn-primary btn-lg btn"
     >
-      Schedule
+      Click to Schedule
     </button>
   </div>
 </body>

@@ -36,6 +36,7 @@ h1 {
 }
 
 .classContainer {
+  margin-top: 50px;
   display: flex;
   justify-content: space-between;
 }
@@ -68,6 +69,14 @@ h1 {
   cursor: move;
   background: white;
   font-size: 14px;
+}
+
+.color1 {
+  background-color: #ffc0cb;
+}
+
+.color2 {
+  background-color: #e64c72;
 }
 
 .cdk-drag-preview {
