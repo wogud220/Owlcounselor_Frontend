@@ -5,51 +5,51 @@
       cdkDropList
       id="classbox"
       #classesNg="cdkDropList"
-      [cdkDropListData]="classes"
+      [cdkDropListData]="option_courses"
       [cdkDropListConnectedTo]="[
-        class1Ng,
-        class2Ng,
-        class3Ng,
-        class4Ng,
-        class5Ng,
-        class6Ng,
-        class7Ng,
-        class8Ng
+        semester0Ng,
+        semester1Ng,
+        semester2Ng,
+        semester3Ng,
+        semester4Ng,
+        semester5Ng,
+        semester6Ng,
+        semester7Ng
       ]"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
       <div
         class="example-box"
-        *ngFor="let item of classes"
+        *ngFor="let item of option_courses"
         [cdkDragData]="item"
         cdkDrag
       >
-        {{ item.id }}
+        {{ item.name }}
       </div>
     </div>
   </div>
-
+  
   <div class="year">
     <div class="example-container2">
       <h2>Freshmen Fall</h2>
 
       <div
         cdkDropList
-        #class1Ng="cdkDropList"
-        [cdkDropListData]="class1"
+        #semester0Ng="cdkDropList"
+        [cdkDropListData]="taken_courses[0]"
         [cdkDropListConnectedTo]="[classesNg]"
-        id="sem1"
+        id="sem0"
         class="example-list"
         (cdkDropListDropped)="drop($event)"
       >
         <div
           class="example-box color1"
-          *ngFor="let item of class1"
+          *ngFor="let item of taken_courses[0]"
           [cdkDragData]="item"
           cdkDrag
         >
-          {{ item.id }}
+          {{ item.name }}
         </div>
       </div>
     </div>
@@ -59,9 +59,9 @@
 
       <div
         cdkDropList
-        #class2Ng="cdkDropList"
-        [cdkDropListData]="class2"
-        id="sem2"
+        #semester1Ng="cdkDropList"
+        [cdkDropListData]="taken_courses[1]"
+        id="sem1"
         [cdkDropListConnectedTo]="[classesNg]"
         class="example-list"
         [cdkDropListEnterPredicate]="noReturnPredicate"
@@ -70,10 +70,10 @@
         <div
           class="example-box color2"
           [cdkDragData]="item"
-          *ngFor="let item of class2"
+          *ngFor="let item of taken_courses[1]"
           cdkDrag
         >
-          {{ item.id }}
+          {{ item.name }}
         </div>
       </div>
     </div>
@@ -82,21 +82,21 @@
 
       <div
         cdkDropList
-        #class3Ng="cdkDropList"
+        #semester2Ng="cdkDropList"
         [cdkDropListEnterPredicate]="noReturnPredicate"
-        [cdkDropListData]="class3"
+        [cdkDropListData]="taken_courses[2]"
         [cdkDropListConnectedTo]="[classesNg]"
         class="example-list"
-        id="sem3"
+        id="sem2"
         (cdkDropListDropped)="drop($event)"
       >
         <div
           class="example-box color3"
           [cdkDragData]="item"
-          *ngFor="let item of class3"
+          *ngFor="let item of taken_courses[2]"
           cdkDrag
         >
-          {{ item.id }}
+          {{ item.name }}
         </div>
       </div>
     </div>
@@ -105,21 +105,21 @@
 
       <div
         cdkDropList
-        #class4Ng="cdkDropList"
-        [cdkDropListData]="class4"
+        #semester3Ng="cdkDropList"
+        [cdkDropListData]="taken_courses[3]"
         [cdkDropListEnterPredicate]="noReturnPredicate"
         [cdkDropListConnectedTo]="[classesNg]"
         class="example-list"
-        id="sem4"
+        id="sem3"
         (cdkDropListDropped)="drop($event)"
       >
         <div
           class="example-box color4"
           [cdkDragData]="item"
-          *ngFor="let item of class4"
+          *ngFor="let item of taken_courses[3]"
           cdkDrag
         >
-          {{ item.id }}
+          {{ item.name }}
         </div>
       </div>
     </div>
@@ -128,21 +128,21 @@
 
       <div
         cdkDropList
-        #class5Ng="cdkDropList"
-        [cdkDropListData]="class5"
+        #semester4Ng="cdkDropList"
+        [cdkDropListData]="taken_courses[4]"
         [cdkDropListEnterPredicate]="noReturnPredicate"
         [cdkDropListConnectedTo]="[classesNg]"
         class="example-list"
-        id="sem5"
+        id="sem4"
         (cdkDropListDropped)="drop($event)"
       >
         <div
           class="example-box color5"
           [cdkDragData]="item"
-          *ngFor="let item of class5"
+          *ngFor="let item of taken_courses[4]"
           cdkDrag
         >
-          {{ item.id }}
+          {{ item.name }}
         </div>
       </div>
     </div>
@@ -151,21 +151,21 @@
 
       <div
         cdkDropList
-        #class6Ng="cdkDropList"
-        [cdkDropListData]="class6"
+        #semester5Ng="cdkDropList"
+        [cdkDropListData]="taken_courses[5]"
         [cdkDropListEnterPredicate]="noReturnPredicate"
         [cdkDropListConnectedTo]="[classesNg]"
         class="example-list"
-        id="sem6"
+        id="sem5"
         (cdkDropListDropped)="drop($event)"
       >
         <div
           class="example-box color6"
           [cdkDragData]="item"
-          *ngFor="let item of class6"
+          *ngFor="let item of taken_courses[5]"
           cdkDrag
         >
-          {{ item.id }}
+          {{ item.name }}
         </div>
       </div>
     </div>
@@ -174,8 +174,31 @@
 
       <div
         cdkDropList
-        #class7Ng="cdkDropList"
-        [cdkDropListData]="class7"
+        #semester6Ng="cdkDropList"
+        [cdkDropListData]="taken_courses[6]"
+        [cdkDropListEnterPredicate]="noReturnPredicate"
+        [cdkDropListConnectedTo]="[classesNg]"
+        class="example-list"
+        id="sem6"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          class="example-box color7"
+          [cdkDragData]="item"
+          *ngFor="let item of taken_courses[6]"
+          cdkDrag
+        >
+          {{ item.name }}
+        </div>
+      </div>
+    </div>
+    <div class="example-container2">
+      <h2>Senior Spring</h2>
+      
+      <div
+        cdkDropList
+        #semester7Ng="cdkDropList"
+        [cdkDropListData]="taken_courses[7]"
         [cdkDropListEnterPredicate]="noReturnPredicate"
         [cdkDropListConnectedTo]="[classesNg]"
         class="example-list"
@@ -183,35 +206,12 @@
         (cdkDropListDropped)="drop($event)"
       >
         <div
-          class="example-box color7"
-          [cdkDragData]="item"
-          *ngFor="let item of class7"
-          cdkDrag
-        >
-          {{ item.id }}
-        </div>
-      </div>
-    </div>
-    <div class="example-container2">
-      <h2>Senior Spring</h2>
-
-      <div
-        cdkDropList
-        #class8Ng="cdkDropList"
-        [cdkDropListData]="class8"
-        [cdkDropListEnterPredicate]="noReturnPredicate"
-        [cdkDropListConnectedTo]="[classesNg]"
-        class="example-list"
-        id="sem8"
-        (cdkDropListDropped)="drop($event)"
-      >
-        <div
           class="example-box color8"
           [cdkDragData]="item"
-          *ngFor="let item of class8"
+          *ngFor="let item of taken_courses[7]"
           cdkDrag
         >
-          {{ item.id }}
+          {{ item.name }}
         </div>
       </div>
     </div>
