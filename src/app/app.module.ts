@@ -13,6 +13,7 @@ import { HomepageComponent } from "./homepage/homepage/homepage.component";
 import { PreferenceComponent } from "./preferencepage/preference/preference.component";
 import { HttpClientModule } from "@angular/common/http";
 // export const routes: Routes = [{ path: "", component: MainpageComponent }];
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HttpClientModule } from "@angular/common/http";
     DragDropModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ScrollingModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

@@ -30,19 +30,20 @@
     <div class="classContainer">
       <div class="example-container">
         <h2>Classes</h2>
-
-        <div
-          cdkDropList
-          #todoList="cdkDropList"
-          [cdkDropListData]="totake"
-          [cdkDropListConnectedTo]="[doneList]"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box color1" *ngFor="let item of totake" cdkDrag>
-            {{ item.id }}
+          <div
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="totake"
+            [cdkDropListConnectedTo]="[doneList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+          >
+          
+            <div class="example-box color1" *ngFor ="let item of totake" cdkDrag>
+              {{ item.id }}
+            </div>
           </div>
-        </div>
+         
       </div>
 
       <div class="example-container">
@@ -64,14 +65,14 @@
     </div>
     <select class="browser-default custom-select" [(ngModel)]="currentSem">
       <option selected>Most recently completed</option>
-      <option value="1">FRESHMEN FALL</option>
-      <option value="2">FRESHMEN SPRING</option>
-      <option value="3">SOPHOMORE FALL</option>
-      <option value="4">SOPHOMORE SPRING</option>
-      <option value="5">JUNIOR FALL</option>
-      <option value="6">JUNIOR SPRING</option>
-      <option value="7">SENIOR FALL</option>
-      <option value="8">SENIOR SPRING</option>
+      <option value="0">FRESHMEN FALL</option>
+      <option value="1">FRESHMEN SPRING</option>
+      <option value="2">SOPHOMORE FALL</option>
+      <option value="3">SOPHOMORE SPRING</option>
+      <option value="4">JUNIOR FALL</option>
+      <option value="5">JUNIOR SPRING</option>
+      <option value="6">SENIOR FALL</option>
+      <option value="7">SENIOR SPRING</option>
     </select>
     <button
       type="button"

@@ -21,8 +21,8 @@ import { MainpageService } from "../../mainpage/mainpage/mainpage.service";
   styleUrls: ["./preference.component.css"]
 })
 export class PreferenceComponent {
-  totake = [{ id: "waefwea", possible: [] }, { id: "yo", possible: [] }];
-
+  totake = [];
+  
   url = "";
   taken = [];
   // done
@@ -35,7 +35,7 @@ export class PreferenceComponent {
     private preferenceService: PreferenceService,
     private mainpageService: MainpageService
   ) {}
-
+  
   getCourses() {
     this.preferenceService.getCourse(this.major, this.degree).then(res => {
       var course_list = res["courses"];
@@ -43,7 +43,7 @@ export class PreferenceComponent {
       // assume course_list is not null
       for (var i = 0; i < course_list.length; i++) {
         // TODO: Populate 'possible' semester
-
+        
         var temp_item: item = {
           id: course_list[i]["name"],
           possible: []
@@ -53,7 +53,7 @@ export class PreferenceComponent {
       }
     });
   }
-
+  
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
@@ -62,6 +62,7 @@ export class PreferenceComponent {
         event.currentIndex
       );
     } else {
+      console.log(this.taken);
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
@@ -72,11 +73,10 @@ export class PreferenceComponent {
   }
 
   direct() {
-    console.log(this.currentSem);
+    
     console.log(this.taken);
-    // this.mainpageService.updateCourse(this.currentSem, this.taken).then(res => [
+    // this.mainpageService.updateCourse(this.major, this.degree, this.currentSem, this.taken).then(res => {
     //   this.router.navigate(['/main']);
-    // ])
-    // this.router.navigate(["/main"]);
+    // });
   }
 }

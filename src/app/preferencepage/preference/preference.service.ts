@@ -9,14 +9,14 @@ export class PreferenceService {
   constructor() {}
 
   getCourse(major: string, degree: number): Promise<Response> {
-    var api = serverURL + "/api/courses";
+    var api = serverURL + "/api/course";
     var payload = {
       major: major,
       degree: degree
     };
-
+    
     return fetch(api, {
-      method: "POST",
+      method: "POST", 
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
@@ -24,6 +24,4 @@ export class PreferenceService {
       body: JSON.stringify(payload)
     }).then(res => res.json());
   }
-
-  postValidation() {}
 }

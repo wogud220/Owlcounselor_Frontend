@@ -7,6 +7,10 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class MainpageService {
+  major: string;
+  sem: number;
+  degree: number;
+  
   option_courses = [
     { name: "COMP140", possible: ["classbox", "sem0"] },
     { name: "COMP182", possible: ["classbox", "sem1"] },
@@ -36,15 +40,15 @@ export class MainpageService {
     return of(this.taken_courses[index]);
   }
 
-  buildPayload() {
+  buildPayload(major: string, degree: number, sem: number, taken = []) {
     // build payload for update
 
     // TODO: Select semester
     var payload = {
-      "major": "Computer Science",
-      "degree": "BS",
-      "sem": 4,
-      "taken": []
+      "major": major,
+      "degree": degree,
+      "sem": sem,
+      "taken": taken
     };
     
     // Build taken
@@ -59,11 +63,17 @@ export class MainpageService {
     return payload;
   }
 
-  updateCourse() {
+  updateCourse(major, degree, sem, taken) {
     
     const api = serverURL + "/api/valid";
     
-    var payload = this.buildPayload();
+    var payload = null;
+    if (taken != null) {
+      payload = this.buildPayload(major, degree, sem, taken)
+    } else {
+      payload = this.buildPayload(major, degree, sem);
+    }
+    
     
     return fetch(api, {
       method: "POST",
@@ -84,7 +94,7 @@ export class MainpageService {
     while(this.option_courses.length > 0) {
       this.option_courses.pop();
     }
-
+    
     // Clear taken_courses
     for (var i = 0; i < this.taken_courses.length; i++) {
       while(this.taken_courses[i].length > 0) {
